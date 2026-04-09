@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BoS Compass — Cambridge 2026</title>
-  <meta name="description" content="BoS Compass: a clean, realistic concept page for a Business of Software Cambridge 2026 companion app." />
+  <meta name="description" content="BoS Compass: a clean, modern concept page for a Business of Software Cambridge 2026 companion app." />
   <style>
     :root{
-      --orange:#f05a28;   /* BoS-style orange */
+      --orange:#f05a28;
       --orange2:#ff7a4d;
-      --ink:#111318;
+      --ink:#121317;
       --muted:#5b6373;
       --bg:#ffffff;
       --bg2:#f6f7fb;
@@ -20,45 +20,27 @@
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--ink);
       background:
-        radial-gradient(1200px 800px at 15% 0%, rgba(240,90,40,.10), transparent 55%),
-        radial-gradient(900px 650px at 85% 10%, rgba(240,90,40,.08), transparent 55%),
+        radial-gradient(1200px 800px at 15% 0%, rgba(240,90,40,.09), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
     }
 
-    a{color:inherit}
-    .wrap{max-width:1100px; margin:0 auto; padding:14px 18px 72px;}
+    .wrap{max-width:980px; margin:0 auto; padding:18px 18px 70px;}
 
-    /* Top banner (like BoS site) */
-    .banner{
-      background: var(--orange);
-      color: #fff;
-      font-weight:800;
-      letter-spacing:.02em;
-      font-size:13px;
-      padding:10px 12px;
-      border-radius: 12px;
-      display:flex; gap:10px; align-items:center; justify-content:space-between;
-      box-shadow: var(--shadow);
-    }
-    .banner small{opacity:.92; font-weight:750}
-
-    /* Nav */
-    nav{
-      margin-top:12px;
+    .topbar{
       border:1px solid var(--stroke);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       border-radius: 999px;
       box-shadow: var(--shadow);
-      position: sticky; top: 10px; z-index: 20;
+      position: sticky; top: 12px; z-index: 30;
       backdrop-filter: blur(8px);
     }
-    .navInner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px;}
+
+    .topbarInner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px;}
     .brand{display:flex; align-items:center; gap:10px; padding:2px 8px;}
     .mark{width:10px;height:10px;border-radius:99px;background: var(--orange); box-shadow:0 0 0 6px rgba(240,90,40,.12)}
     .brand b{letter-spacing:-.02em}
@@ -76,24 +58,10 @@
     }
     .links a:hover{border-color:var(--stroke); background: rgba(240,90,40,.06)}
 
-    /* Hero */
-    header.hero{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
-      align-items:start;
+    .hero{
+      margin-top:18px;
+      padding:18px 0 6px;
     }
-    @media (max-width: 980px){header.hero{grid-template-columns:1fr;}}
-
-    .card{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.92);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-    }
-
-    .pad{padding:22px;}
 
     .kicker{
       display:flex; align-items:center; gap:10px;
@@ -101,18 +69,18 @@
       font-size:12.5px;
       letter-spacing:.14em;
       text-transform:uppercase;
-      font-weight:800;
+      font-weight:850;
     }
 
     h1{margin:12px 0 10px; font-size: clamp(30px, 3.2vw, 46px); line-height:1.06; letter-spacing:-.03em}
-    .lead{margin:0; color:#2c3240; line-height:1.6; font-size:15px; max-width:70ch}
+    .lead{margin:0; color:#2c3240; line-height:1.65; font-size:15px; max-width:80ch}
 
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
     button{
       border-radius:999px;
       border:1px solid var(--stroke);
       padding:10px 12px;
-      font-weight:850;
+      font-weight:900;
       cursor:pointer;
       color:#1a1d23;
       background:#fff;
@@ -127,16 +95,33 @@
       box-shadow: 0 14px 30px rgba(240,90,40,.22);
     }
 
-    .features{margin-top:18px; display:grid; gap:10px;}
+    .section{margin-top:16px;}
+
+    .panel{
+      border:1px solid var(--stroke);
+      background:#fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+
+    .panelHeader{
+      background: var(--orange);
+      color:#fff;
+      font-weight:950;
+      padding:14px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      letter-spacing:-.01em;
+    }
+
+    .panelBody{padding:16px;}
+
+    .featureList{display:grid; gap:10px;}
     .feat{border:1px solid var(--stroke); border-radius:14px; padding:14px; background: #fff;}
     .feat b{display:block; margin-bottom:6px;}
-    .feat p{margin:0; color:#3b4354; line-height:1.55; font-size:13.5px}
+    .feat p{margin:0; color:#3b4354; line-height:1.6; font-size:13.5px}
 
-    section{margin-top:16px;}
-    .row{display:grid; grid-template-columns: 1fr 1fr; gap:16px; align-items:start;}
-    @media (max-width: 980px){.row{grid-template-columns:1fr;}}
-
-    .label{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:850; margin-bottom:10px}
+    .label{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:900; margin-bottom:10px}
 
     .fieldRow{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
     select{
@@ -145,7 +130,7 @@
       color:#1a1d23;
       border-radius:12px;
       padding:10px 10px;
-      font-weight:800;
+      font-weight:900;
       outline:none;
     }
 
@@ -154,123 +139,149 @@
       background: #fff;
       border-radius: 16px;
       padding:14px;
-      line-height:1.65;
+      line-height:1.7;
       color:#222735;
       min-height:110px;
       position:relative;
       box-shadow: 0 10px 24px rgba(16,24,40,.08);
     }
-    .bubble:before{
-      content:"";
-      position:absolute;
-      left:18px; top:-7px;
-      width:14px; height:14px;
-      background:#fff;
-      border-left:1px solid var(--stroke);
-      border-top:1px solid var(--stroke);
-      transform:rotate(45deg);
+
+    .tiny{margin-top:10px; color:var(--muted); font-size:12.5px; line-height:1.55}
+
+    /* Schedule accordions */
+    details.day{border:1px solid var(--stroke); border-radius:14px; overflow:hidden; background:#fff; box-shadow: 0 10px 24px rgba(16,24,40,.07)}
+    details.day + details.day{margin-top:10px}
+    summary.daySum{
+      list-style:none;
+      cursor:pointer;
+      padding:12px 14px;
+      background: rgba(240,90,40,.10);
+      display:flex; align-items:center; justify-content:space-between;
+      font-weight:950;
     }
+    summary.daySum::-webkit-details-marker{display:none}
+    .chev{transition:transform .18s ease}
+    details[open] .chev{transform:rotate(180deg)}
 
-    .tiny{margin-top:10px; color:var(--muted); font-size:12.5px; line-height:1.5}
-
-    .scheduleItem{padding:12px; border:1px solid var(--stroke); background:#fff; border-radius:14px; margin-bottom:10px;}
-    .scheduleItem .time{color:#2a3142; font-weight:900; letter-spacing:.02em}
-    .scheduleItem .title{font-weight:950; margin-top:3px}
-    .scheduleItem .desc{color:#3b4354; font-size:13px; line-height:1.55; margin-top:6px}
+    .slot{padding:12px 14px; border-top:1px solid var(--stroke)}
+    .slot .time{font-weight:950}
+    .slot .title{margin-top:4px; font-weight:900; color: #1a1d23}
+    .slot .desc{margin-top:6px; color:#3b4354; font-size:13px; line-height:1.6}
+    .bullets{margin:8px 0 0; padding-left:18px; color:#3b4354; font-size:13px; line-height:1.6}
 
     footer{margin-top:18px; color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="banner">
-      <div><small>BoS Europe 2026</small> · Cambridge, UK · 13–14 April 2026</div>
-      <div>Conference companion concept</div>
-    </div>
-
-    <nav>
-      <div class="navInner">
+    <div class="topbar">
+      <div class="topbarInner">
         <div class="brand"><span class="mark"></span> <div><b>BoS</b> <span>Compass</span></div></div>
         <div class="links">
-          <a href="#concept">Concept</a>
+          <a href="#what">What it does</a>
           <a href="#conversation">Conversation</a>
           <a href="#schedule">Schedule</a>
         </div>
       </div>
-    </nav>
+    </div>
 
-    <header class="hero" id="concept">
-      <div class="card">
-        <div class="pad">
-          <div class="kicker"><span class="mark"></span> A realistic app page those cards could have shipped</div>
-          <h1>Navigate BoS Cambridge like a local.
-            <span style="color:#2c3240; font-weight:900">Meet better people. Leave with actions.</span>
-          </h1>
-          <p class="lead">
-            <b>BoS Compass</b> is a simple conference companion: it turns the schedule into a personal plan,
-            gives you conversation openers that don’t feel awkward, and captures next steps so the value survives the flight home.
-          </p>
-          <div class="cta">
-            <button class="primary" id="gen">Generate opener</button>
-            <button id="copy">Copy</button>
-          </div>
+    <div class="hero">
+      <div class="kicker"><span class="mark"></span> Cambridge 2026 companion concept</div>
+      <h1>A page the project cards could have shipped.</h1>
+      <p class="lead">
+        <b>BoS Compass</b> turns BoS into a personal plan. It helps you pick the right sessions, start fun conversations,
+        and leave with follow‑ups that actually happen.
+      </p>
+      <div class="cta">
+        <button class="primary" id="gen">Generate a quirky opener</button>
+        <button id="copy">Copy</button>
+      </div>
+    </div>
 
-          <div class="features">
-            <div class="feat"><b>Agenda that respects attention</b><p>“Must-see / nice-to-see / skip”, buffer time, and one-tap “what’s next?” directions.</p></div>
-            <div class="feat"><b>Networking that feels human</b><p>Opener + follow-up pairs, graceful exits, and reminders of what you actually care about.</p></div>
-            <div class="feat"><b>Notes → next actions</b><p>Talk notes that become follow-ups: who, what you promised, and when to message.</p></div>
-          </div>
+    <div class="section panel" id="what">
+      <div class="panelHeader">What it does <span style="opacity:.9; font-weight:900">(simple + useful)</span></div>
+      <div class="panelBody">
+        <div class="featureList">
+          <div class="feat"><b>Agenda that respects attention</b><p>“Must-see / nice-to-see / skip”, buffer time, and a single “what’s next?” screen with directions.</p></div>
+          <div class="feat"><b>Networking that feels human</b><p>Openers + follow-ups + gentle reminders of what you care about. Also: an “escape hatch” button for awkward chats.</p></div>
+          <div class="feat"><b>Notes → next actions</b><p>Talk notes that become follow-ups: who, what you promised, and a tiny next step you’ll actually do.</p></div>
         </div>
       </div>
+    </div>
 
-      <div class="card" id="conversation">
-        <div class="pad">
-          <div class="label">Conversation opener</div>
-          <div class="fieldRow" style="margin-bottom:10px;">
-            <select id="topic"></select>
-            <button id="switch">Surprise me</button>
-          </div>
-          <div class="bubble" id="out"></div>
-          <div class="tiny">Rule of thumb: opener → one specific follow-up → swap one real example.</div>
+    <div class="section panel" id="conversation">
+      <div class="panelHeader">Conversation starters <span style="opacity:.9; font-weight:900">(fun, not cringe)</span></div>
+      <div class="panelBody">
+        <div class="label">Choose your flavour</div>
+        <div class="fieldRow" style="margin-bottom:10px;">
+          <select id="topic"></select>
+          <select id="mode"></select>
+          <button id="switch">Surprise me</button>
         </div>
+        <div class="bubble" id="out"></div>
+        <div class="tiny">Use it like a spell: opener → follow-up → one real example. Then you’re in a real conversation.</div>
       </div>
-    </header>
+    </div>
 
-    <section class="row" id="schedule">
-      <div class="card">
-        <div class="pad">
-          <div class="label">Schedule (publicly readable now)</div>
-          <div class="scheduleItem">
+    <div class="section panel" id="schedule">
+      <div class="panelHeader">Schedule <span style="opacity:.9; font-weight:900">(from your screenshots)</span></div>
+      <div class="panelBody">
+        <details class="day" open>
+          <summary class="daySum">Sunday, 12 April <span class="chev">▾</span></summary>
+          <div class="slot">
             <div class="time">3:30–6:00 pm</div>
             <div class="title">Photo Walk (meet at Porters’ Lodge, Churchill College)</div>
-            <div class="desc">Relaxed hosted walk into Cambridge, coffee stop, low-pressure conversations before the main days.</div>
+            <div class="desc">Join us for a relaxed, hosted walk into Cambridge. Coffee stop included.</div>
+            <ul class="bullets">
+              <li>See a bit of Cambridge beyond the conference</li>
+              <li>Meet fellow attendees in a low-pressure setting</li>
+              <li>Start conversations that carry through the next two days</li>
+            </ul>
           </div>
-          <div class="scheduleItem">
+          <div class="slot">
             <div class="time">6:00–9:00 pm</div>
             <div class="title">Pre‑Registration & Drinks Reception (The Buttery Bar, Churchill College)</div>
-            <div class="desc">Check in, grab a drink, and start connecting with founders/CEOs/operators.</div>
+            <div class="desc">Arrive, check in, grab a drink, and start connecting.</div>
           </div>
-          <div class="tiny">
-            If you send me the official full agenda link/PDF, I’ll replace this with the complete schedule (Day 1 / Day 2) in the same clean style.
-          </div>
-        </div>
-      </div>
+        </details>
 
-      <div class="card">
-        <div class="pad">
-          <div class="label">Follow‑up templates</div>
-          <div class="bubble" id="follow"></div>
-          <div class="cta" style="margin-top:10px;">
-            <button class="primary" id="newFollow">New follow‑up</button>
+        <details class="day">
+          <summary class="daySum">Monday, 13 April <span class="chev">▾</span></summary>
+          <div class="slot">
+            <div class="time">8:00 am</div>
+            <div class="title">Registration and Breakfast with <span style="color:var(--orange)">Birds of a Feather</span> discussions</div>
           </div>
-          <div class="tiny">Short + contextual + specific beats generic “great to connect!” every time.</div>
-        </div>
+          <div class="slot">
+            <div class="time">9:00 am</div>
+            <div class="title">Morning Sessions</div>
+            <ul class="bullets">
+              <li><b>April Dunford</b>: The Hard Parts of Positioning: Learnings from 11 years and 300 technology companies</li>
+              <li><b>Vince Darley</b>: Extreme Clarity. Relentless Focus. Lessons from Meta, Deliveroo &amp; King</li>
+              <li><b>Bruce McCarthy</b>: From Product Managers to Product Builders: How AI is Rewiring Product Development</li>
+            </ul>
+          </div>
+          <div class="slot">
+            <div class="time">12:30 pm</div>
+            <div class="title">Lunch and <span style="color:var(--orange)">Birds of a Feather</span> discussions</div>
+          </div>
+          <div class="slot">
+            <div class="time">2:00 pm</div>
+            <div class="title">Afternoon Sessions</div>
+            <ul class="bullets">
+              <li><b>Joanna Wiebe</b>: The Art and Science of Copywriting</li>
+              <li><b>Breakouts</b> &amp; Meet the Speakers</li>
+              <li><b>Shawn Anderson</b>: Building B2B Ecosystems</li>
+            </ul>
+          </div>
+        </details>
+
+        <div class="tiny">If you send the Tuesday screenshot / full agenda link, I’ll add the rest in the same style.</div>
       </div>
-    </section>
+    </div>
 
     <footer>
-      <div>Concept page (clean, orange/white BoS vibe). Built fast for demo.</div>
-      <div>URL: <span style="font-weight:850">mbo-membo.github.io/mbo-bos-board-theatre</span></div>
+      <div>BoS Compass · concept page · orange/white BoS vibe · modern single-column layout.</div>
+      <div>URL: <b>mbo-membo.github.io/mbo-bos-board-theatre</b></div>
     </footer>
   </div>
 
@@ -278,9 +289,17 @@
     const $ = (s)=>document.querySelector(s);
     const out = $('#out');
     const topicSel = $('#topic');
+    const modeSel = $('#mode');
 
     const topics = [
       'pricing & packaging','retention loops','PLG funnels','founder sales','positioning','customer research','AI in SaaS','team scaling','roadmapping'
+    ];
+
+    const modes = [
+      {k:'playful', name:'Playful'},
+      {k:'nerdy', name:'Nerdy'},
+      {k:'bold', name:'Bold'},
+      {k:'wholesome', name:'Wholesome'}
     ];
 
     for(const t of topics){
@@ -288,25 +307,46 @@
       o.value=t; o.textContent=t;
       topicSel.appendChild(o);
     }
+    for(const m of modes){
+      const o=document.createElement('option');
+      o.value=m.k; o.textContent=m.name;
+      modeSel.appendChild(o);
+    }
 
-    const openers = [
-      (t)=>`I’m here mainly for <b>${t}</b> — what’s the most counterintuitive thing you’ve learned about it this year?`,
-      (t)=>`If you could redo one decision about <b>${t}</b>, what would you change (and why)?`,
-      (t)=>`What’s the smallest experiment you’ve run around <b>${t}</b> that genuinely moved a real metric?`,
-      (t)=>`Where do you see smart teams oversimplify cause/effect when they talk about <b>${t}</b>?`,
-      (t)=>`What’s a “boring” habit around <b>${t}</b> that consistently beats big initiatives?`
-    ];
+    const bank = {
+      playful: [
+        (t)=>`Quick vibe-check: on <b>${t}</b>, are you Team “tiny experiments” or Team “burn it down and rebuild”?`,
+        (t)=>`If <b>${t}</b> were a household appliance, what would it be and why is it mildly cursed?`,
+        (t)=>`I’m collecting spicy-but-useful takes on <b>${t}</b>. What’s yours that gets you in trouble?`
+      ],
+      nerdy: [
+        (t)=>`For <b>${t}</b>, what’s the simplest metric you trust — and the one you absolutely do not?`,
+        (t)=>`What’s one assumption about <b>${t}</b> you’ve stopped believing after seeing real data?`,
+        (t)=>`If you had to run exactly one experiment on <b>${t}</b> this month, what would it be?`
+      ],
+      bold: [
+        (t)=>`Hot take request: what’s the most overrated advice you hear about <b>${t}</b>?`,
+        (t)=>`If you were CEO for a week, what would you delete first related to <b>${t}</b>?`,
+        (t)=>`What’s the “everyone nods, nobody does it” truth about <b>${t}</b>?`
+      ],
+      wholesome: [
+        (t)=>`What’s one small thing you do around <b>${t}</b> that makes your week noticeably better?`,
+        (t)=>`Who taught you the best lesson about <b>${t}</b>, and what was it?`,
+        (t)=>`What’s a win you’re proud of related to <b>${t}</b> that doesn’t sound impressive until you’ve lived it?`
+      ]
+    };
 
     const followups = [
       `Follow-up: what would you try in the next 14 days if you were starting from scratch?`,
       `Follow-up: what’s the red flag you now spot instantly?`,
-      `Follow-up: which metric do you trust least — and what do you use instead?`,
-      `Follow-up: what’s a belief you’ve stopped believing?`
+      `Follow-up: what did you change your mind about recently?`,
+      `Follow-up: what’s the tiniest next step that actually matters?`
     ];
 
     function gen(){
       const t = topicSel.value;
-      const opener = openers[(Math.random()*openers.length)|0](t);
+      const mode = modeSel.value;
+      const opener = bank[mode][(Math.random()*bank[mode].length)|0](t);
       const f = followups[(Math.random()*followups.length)|0];
       out.innerHTML = `${opener}<div style="margin-top:10px; color:#5b6373">${f}</div>`;
     }
@@ -323,27 +363,18 @@
       });
     }
 
-    const followOut = $('#follow');
-    const templates = [
-      (name)=>`Hi ${name} — great talking at BoS. The bit you said about <b>keeping experiments tiny</b> stuck with me. Would you be up for a 15‑min chat next week? I’d love one follow-up on how you choose what to cut.`,
-      (name)=>`Hey ${name} — enjoyed our chat at BoS. You mentioned <b>one metric you stopped trusting</b> and I’ve been thinking about it. If you can share a quick example, I’ll swap you mine too.`,
-      (name)=>`Hi ${name} — thanks again for the BoS conversation. I wrote down your suggestion about <b>buffering attention</b> between sessions. If you’re open, I’ll send you a 3‑bullet summary of what I’m trying — would love your critique.`
-    ];
-
-    function newFollow(){
-      const name = ['Alex','Sam','Jamie','Taylor','Morgan','Priya','Chris'][(Math.random()*7)|0];
-      followOut.innerHTML = templates[(Math.random()*templates.length)|0](name);
-    }
-
     $('#gen').addEventListener('click', gen);
-    $('#switch').addEventListener('click', ()=>{ topicSel.value = topics[(Math.random()*topics.length)|0]; gen(); });
+    $('#switch').addEventListener('click', ()=>{
+      topicSel.value = topics[(Math.random()*topics.length)|0];
+      modeSel.value = modes[(Math.random()*modes.length)|0].k;
+      gen();
+    });
     $('#copy').addEventListener('click', copyText);
-    $('#newFollow').addEventListener('click', newFollow);
 
     // init
-    topicSel.value = 'pricing & packaging';
+    topicSel.value='positioning';
+    modeSel.value='playful';
     gen();
-    newFollow();
   </script>
 </body>
 </html>
