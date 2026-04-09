@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BoS Cambridge 2026 — Board Theatre</title>
-  <meta name="description" content="A flashy, conference-inspired kanban theatre for Business of Software Cambridge 2026." />
+  <title>BoS Cambridge 2026 — Compass</title>
+  <meta name="description" content="A snazzy concept page for a Business of Software Cambridge 2026 companion app: plan, navigate, meet people, and follow up." />
   <style>
     :root{
-      --bg0:#07060b;
-      --bg1:#0a0b16;
-      --ink:#e9e7ff;
-      --muted:rgba(233,231,255,.72);
+      --bg0:#06060c;
+      --bg1:#0b0b18;
+      --ink:#f1efff;
+      --muted:rgba(241,239,255,.74);
       --glass:rgba(255,255,255,.06);
       --stroke:rgba(255,255,255,.10);
       --accent:#7c5cff;
@@ -18,7 +18,7 @@
       --accent3:#ff3d9a;
       --good:#49ff9a;
       --warn:#ffcf5a;
-      --shadow: 0 18px 50px rgba(0,0,0,.55);
+      --shadow: 0 18px 50px rgba(0,0,0,.58);
       --radius:18px;
     }
 
@@ -29,11 +29,11 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--ink);
       background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
-        radial-gradient(900px 700px at 80% 20%, rgba(0,212,255,.18), transparent 55%),
-        radial-gradient(900px 650px at 60% 90%, rgba(255,61,154,.14), transparent 60%),
+        radial-gradient(1200px 900px at 10% 10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(900px 700px at 85% 20%, rgba(0,212,255,.15), transparent 55%),
+        radial-gradient(900px 650px at 60% 95%, rgba(255,61,154,.12), transparent 60%),
         linear-gradient(160deg, var(--bg0), var(--bg1));
-      overflow:hidden;
+      overflow-x:hidden;
     }
 
     /* subtle animated grain */
@@ -48,7 +48,7 @@
           </filter>\
           <rect width="220" height="220" filter="url(%23n)" opacity=".18"/>\
         </svg>');
-      opacity:.10;
+      opacity:.09;
       mix-blend-mode:overlay;
       animation:grain 9s steps(6) infinite;
       pointer-events:none;
@@ -62,512 +62,375 @@
       100%{transform:translate3d(0,0,0)}
     }
 
-    header{
-      position:relative;
-      padding:24px 22px 10px;
-      display:flex; gap:14px;
-      align-items:flex-start;
-      justify-content:space-between;
-    }
+    .wrap{max-width:1120px; margin:0 auto; padding:18px 18px 70px;}
 
-    .brand{
-      display:flex; flex-direction:column; gap:6px;
-      max-width:min(840px, 74vw);
+    nav{
+      position:sticky; top:0; z-index:50;
+      margin:12px auto 18px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.26);
+      border-radius:999px;
+      box-shadow:0 14px 50px rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
     }
+    .navInner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px;}
 
-    .kicker{
-      display:flex; align-items:center; gap:10px;
-      font-size:13px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-
-    .dot{
-      width:9px;height:9px;border-radius:99px;
+    .logo{display:flex; align-items:center; gap:10px; padding:2px 8px;}
+    .dot{width:10px;height:10px;border-radius:99px;
       background:linear-gradient(120deg,var(--accent),var(--accent2));
       box-shadow:0 0 18px rgba(124,92,255,.55);
     }
+    .brand{font-weight:850; letter-spacing:-.02em}
+    .brand span{color:rgba(241,239,255,.70); font-weight:750}
 
-    h1{
-      margin:0;
-      font-size: clamp(22px, 2.6vw, 34px);
-      line-height:1.05;
-      letter-spacing:-.02em;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.45;
-      max-width:72ch;
-    }
-
-    .controls{
-      display:flex; gap:10px; align-items:center;
-      padding-top:2px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    button{
-      appearance:none;
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.06);
-      color:var(--ink);
+    .navLinks{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    a.btn{
+      display:inline-flex; align-items:center; gap:8px;
+      text-decoration:none;
+      color:rgba(241,239,255,.88);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      padding:8px 10px;
       border-radius:999px;
-      padding:10px 12px;
-      font-weight:650;
-      letter-spacing:.01em;
-      cursor:pointer;
-      box-shadow:0 8px 30px rgba(0,0,0,.35);
+      font-size:13px;
       transition:transform .12s ease, background .2s ease, border-color .2s ease;
+    }
+    a.btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18)}
+
+    header.hero{padding:32px 0 18px; display:grid; grid-template-columns: 1.08fr .92fr; gap:18px; align-items:stretch;}
+    @media (max-width: 980px){header.hero{grid-template-columns: 1fr;}}
+
+    .heroCard{
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 220px at 20% 0%, rgba(124,92,255,.28), transparent 62%),
+        radial-gradient(420px 240px at 80% 10%, rgba(0,212,255,.20), transparent 58%),
+        radial-gradient(420px 240px at 60% 120%, rgba(255,61,154,.16), transparent 58%);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .pad{position:relative; padding:22px 22px 20px;}
+
+    .kicker{display:flex; gap:10px; align-items:center; color:rgba(241,239,255,.72); font-size:13px; letter-spacing:.14em; text-transform:uppercase}
+    h1{margin:10px 0 10px; font-size: clamp(28px, 3.5vw, 46px); line-height:1.03; letter-spacing:-.03em}
+    .lead{margin:0; max-width:62ch; color:rgba(241,239,255,.78); line-height:1.55; font-size:15px}
+
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+    button.primary, button.ghost{
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px 12px;
+      font-weight:800;
+      cursor:pointer;
+      color:var(--ink);
+      background:rgba(255,255,255,.07);
+      backdrop-filter: blur(10px);
+      box-shadow:0 10px 30px rgba(0,0,0,.30);
+      transition:transform .12s ease, background .2s ease, border-color .2s ease;
+    }
+    button.primary{
+      background: linear-gradient(120deg, rgba(124,92,255,.35), rgba(0,212,255,.20));
+      border-color: rgba(124,92,255,.35);
+    }
+    button.primary:hover, button.ghost:hover{transform:translateY(-1px); background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.20)}
+
+    .miniGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    @media (max-width: 980px){.miniGrid{grid-template-columns:1fr;}}
+
+    .tile{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .tile:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(420px 220px at 20% 0%, rgba(124,92,255,.18), transparent 58%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .tile h3{margin:0 0 8px; font-size:15px; letter-spacing:-.01em; position:relative}
+    .tile p{margin:0; color:rgba(241,239,255,.72); line-height:1.45; font-size:13px; position:relative}
+
+    section{margin-top:16px;}
+    .grid3{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;}
+    @media (max-width: 980px){.grid3{grid-template-columns:1fr;}}
+
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(360px 200px at 20% 0%, rgba(0,212,255,.14), transparent 60%),
+        radial-gradient(360px 200px at 90% 15%, rgba(255,61,154,.10), transparent 55%);
+      pointer-events:none;
+      opacity:.85;
+    }
+    .card .t{position:relative; font-weight:900; letter-spacing:-.01em; margin:0 0 8px;}
+    .card ul{position:relative; margin:0; padding-left:18px; color:rgba(241,239,255,.74); line-height:1.55; font-size:13px}
+
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.22);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:var(--shadow);
       backdrop-filter: blur(10px);
     }
-    button:hover{transform:translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.18)}
-    button:active{transform:translateY(0px) scale(.99)}
+
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px; align-items:start;}
+    @media (max-width: 980px){.row{grid-template-columns:1fr;}}
+
+    .label{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:rgba(241,239,255,.62); margin-bottom:6px}
+    .output{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:12px;
+      min-height: 92px;
+      color:rgba(241,239,255,.82);
+      line-height:1.45;
+    }
 
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       border:1px solid rgba(255,255,255,.10);
       background:rgba(255,255,255,.05);
-      padding:9px 12px;
+      padding:7px 10px;
       border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-      white-space:nowrap;
-      box-shadow:0 8px 30px rgba(0,0,0,.25);
-      backdrop-filter: blur(10px);
-    }
-    .pill strong{color:var(--ink)}
-
-    main{
-      position:relative;
-      height: calc(100% - 86px);
-      padding:10px 18px 18px;
-      display:grid;
-      grid-template-rows: auto 1fr;
-      gap:14px;
-    }
-
-    .stage{
-      position:relative;
-      border:1px solid rgba(255,255,255,.10);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-
-    .columns{
-      position:absolute; inset:0;
-      display:grid;
-      grid-template-columns: repeat(5, minmax(220px, 1fr));
-      gap:12px;
-      padding:14px;
-    }
-
-    .col{
-      position:relative;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-      border-radius:16px;
-      overflow:hidden;
-    }
-
-    .col:before{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(900px 500px at 50% 0%, rgba(124,92,255,.12), transparent 55%);
-      opacity:.7;
-      pointer-events:none;
-    }
-
-    .colHeader{
-      position:sticky;
-      top:0;
-      padding:12px 12px 10px;
-      display:flex; align-items:center; justify-content:space-between;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      background:linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,0));
-      backdrop-filter: blur(12px);
-      z-index:4;
-    }
-
-    .colTitle{font-weight:800; letter-spacing:.02em}
-    .badge{
-      font-size:12px;
-      color:rgba(255,255,255,.82);
-      padding:5px 8px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.05);
-    }
-
-    .doneGlow .colHeader{border-bottom-color:rgba(73,255,154,.25)}
-    .doneGlow{box-shadow: inset 0 0 0 1px rgba(73,255,154,.10)}
-
-    /* Cards layer — one absolute plane above columns for smooth cross-column motion */
-    .cardsLayer{position:absolute; inset:0; pointer-events:none;}
-
-    .card{
-      position:absolute;
-      width: min(240px, 18vw);
-      min-width: 210px;
-      max-width: 270px;
-      padding:12px 12px 10px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      box-shadow: 0 14px 40px rgba(0,0,0,.45);
-      transform: translate3d(var(--x), var(--y), 0) rotate(var(--r));
-      transition:
-        transform var(--t, 680ms) cubic-bezier(.2,.9,.2,1),
-        opacity 320ms ease,
-        filter 320ms ease;
-      overflow:hidden;
-      backdrop-filter: blur(12px);
-    }
-
-    .card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(320px 120px at 20% 0%, rgba(124,92,255,.30), transparent 60%),
-        radial-gradient(240px 140px at 85% 15%, rgba(0,212,255,.22), transparent 55%),
-        radial-gradient(240px 140px at 70% 120%, rgba(255,61,154,.18), transparent 55%);
-      opacity:.9;
-      pointer-events:none;
-    }
-
-    .cardInner{position:relative; display:flex; flex-direction:column; gap:8px}
-
-    .title{
-      font-weight:850;
-      letter-spacing:-.01em;
-      line-height:1.15;
-      font-size:13.5px;
-    }
-
-    .meta{
-      display:flex; flex-wrap:wrap; gap:6px;
-      color:rgba(255,255,255,.80);
-      font-size:11.5px;
-    }
-
-    .chip{
-      padding:4px 7px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
+      color:rgba(241,239,255,.76);
+      font-size:12.5px;
       white-space:nowrap;
     }
 
-    .chip.agent-b{border-color:rgba(124,92,255,.35)}
-    .chip.agent-q{border-color:rgba(0,212,255,.35)}
-    .chip.agent-m{border-color:rgba(255,61,154,.35)}
+    footer{margin-top:18px; color:rgba(241,239,255,.60); font-size:12.5px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px}
 
-    .pulse{
-      position:absolute; inset:0;
-      filter: blur(14px);
-      opacity:.0;
-      transition:opacity 200ms ease;
-      background: radial-gradient(220px 140px at 40% 50%, rgba(124,92,255,.35), transparent 60%);
-      pointer-events:none;
-    }
-    .card.moving .pulse{opacity:.65}
-
-    .card.done{
-      filter:saturate(1.15) brightness(1.04);
-      border-color: rgba(73,255,154,.25);
-    }
-
-    .footerHint{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:0 6px;
-      color:rgba(233,231,255,.65);
-      font-size:12px;
-    }
-
-    .kbd{border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); padding:2px 6px; border-radius:8px; color:rgba(255,255,255,.84)}
-
-    @media (max-width: 1100px){
-      .columns{grid-template-columns: repeat(5, 260px); overflow:auto}
-      .card{width:240px}
+    .spark{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(124,92,255,.7), rgba(0,212,255,.55), rgba(255,61,154,.55), transparent);
+      opacity:.75;
+      margin:16px 0;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="kicker"><span class="dot"></span> Business of Software • Cambridge 2026</div>
-      <h1>Board Theatre: build the conference companion app — at unreasonable speed</h1>
-      <p class="sub">A little flashy demo: cards stream in, agents “own” them, and the whole thing slams into Done. Inspired by the GitHub Project board performance you just filmed.</p>
-    </div>
-    <div class="controls">
-      <span class="pill"><strong id="stat">240</strong> cards • <strong id="speed">1.0×</strong> speed</span>
-      <button id="restart">Restart</button>
-      <button id="faster">Faster</button>
-      <button id="slower">Slower</button>
-    </div>
-  </header>
-
-  <main>
-    <div class="stage" id="stage">
-      <div class="columns" id="columns">
-        <section class="col" data-col="backlog"><div class="colHeader"><div class="colTitle">Backlog</div><div class="badge" id="b_backlog">0</div></div></section>
-        <section class="col" data-col="ready"><div class="colHeader"><div class="colTitle">Ready</div><div class="badge" id="b_ready">0</div></div></section>
-        <section class="col" data-col="progress"><div class="colHeader"><div class="colTitle">In progress</div><div class="badge" id="b_progress">0</div></div></section>
-        <section class="col" data-col="review"><div class="colHeader"><div class="colTitle">In review</div><div class="badge" id="b_review">0</div></div></section>
-        <section class="col doneGlow" data-col="done"><div class="colHeader"><div class="colTitle">Done</div><div class="badge" id="b_done">0</div></div></section>
+  <div class="wrap">
+    <nav>
+      <div class="navInner">
+        <div class="logo">
+          <span class="dot"></span>
+          <div class="brand">BoS <span>Compass</span></div>
+          <span class="pill">Cambridge 2026</span>
+        </div>
+        <div class="navLinks">
+          <a class="btn" href="#concept">Concept</a>
+          <a class="btn" href="#features">Features</a>
+          <a class="btn" href="#prompts">Prompts</a>
+          <a class="btn" href="#followups">Follow‑ups</a>
+        </div>
       </div>
-      <div class="cardsLayer" id="cards"></div>
-    </div>
+    </nav>
 
-    <div class="footerHint">
-      <div>Tip: press <span class="kbd">Space</span> to restart • <span class="kbd">↑</span>/<span class="kbd">↓</span> to change speed</div>
-      <div style="opacity:.85">Agents: <span class="chip agent-b">B‑Bot</span> <span class="chip agent-q">Qbot</span> <span class="chip agent-m">M‑Bot</span></div>
-    </div>
-  </main>
-
-  <script>
-    const stage = document.getElementById('stage');
-    const cardsLayer = document.getElementById('cards');
-
-    const badgeEls = {
-      backlog: document.getElementById('b_backlog'),
-      ready: document.getElementById('b_ready'),
-      progress: document.getElementById('b_progress'),
-      review: document.getElementById('b_review'),
-      done: document.getElementById('b_done')
-    };
-
-    const statEl = document.getElementById('stat');
-    const speedEl = document.getElementById('speed');
-
-    const columns = Array.from(document.querySelectorAll('.col'));
-    const colByKey = Object.fromEntries(columns.map(c => [c.dataset.col, c]));
-
-    const rand = (a,b)=>a+Math.random()*(b-a);
-    const pick = arr => arr[(Math.random()*arr.length)|0];
-    const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
-
-    const tracks = ['Agenda','Networking','Logistics','Notes','Follow-ups','Research','Decisions','Polish'];
-    const verbs = ['Design','Implement','Draft','Verify','Refine','Prototype','Test','Ship','Investigate','Outline','Review'];
-    const topics = ['pricing & packaging','retention loops','PLG funnels','founder sales','positioning','customer research','AI in SaaS','product strategy','storytelling','team scaling','roadmapping','activation'];
-    const things = ['personal agenda builder','session bookmarks','talk reminders','speaker cards','topic tags','offline notes','conversation starter pack','post-talk action list','contact capture','follow-up templates','venue quick links','coffee/meetup suggestions','“who should I talk to?” prompts','daily plan summary','live note capture','FAQ + logistics page','map shortcuts'];
-
-    const agents = [
-      { key:'b', label:'B‑Bot', cls:'agent-b' },
-      { key:'q', label:'Qbot', cls:'agent-q' },
-      { key:'m', label:'M‑Bot', cls:'agent-m' }
-    ];
-
-    const STATUS = ['backlog','ready','progress','review','done'];
-
-    let SPEED = 1.0;
-
-    function measureColumns(){
-      const rStage = stage.getBoundingClientRect();
-      const rCols = STATUS.map(k => {
-        const el = colByKey[k];
-        const r = el.getBoundingClientRect();
-        return {
-          key:k,
-          x: r.left - rStage.left,
-          y: r.top - rStage.top,
-          w: r.width,
-          h: r.height
-        };
-      });
-      return { stage: rStage, cols: Object.fromEntries(rCols.map(o=>[o.key,o])) };
-    }
-
-    function cardTitle(){
-      return `BoS Cambridge 2026 — ${pick(tracks)}: ${pick(verbs)} ${pick(things)} (${pick(topics)})`;
-    }
-
-    function makeCard(i){
-      const a = pick(agents);
-      const el = document.createElement('div');
-      el.className = 'card';
-      el.style.setProperty('--r', `${rand(-2.4, 2.4)}deg`);
-      el.innerHTML = `
-        <div class="pulse"></div>
-        <div class="cardInner">
-          <div class="title"></div>
-          <div class="meta">
-            <span class="chip ${a.cls}">${a.label}</span>
-            <span class="chip">Cambridge</span>
-            <span class="chip">2026</span>
+    <header class="hero" id="concept">
+      <div class="heroCard">
+        <div class="pad">
+          <div class="kicker"><span class="dot"></span> A companion app concept</div>
+          <h1>Make BoS Cambridge feel smaller.
+            <span style="color:rgba(241,239,255,.72); font-weight:820">Plan faster, meet better, follow up.</span>
+          </h1>
+          <p class="lead">
+            <strong>BoS Compass</strong> is a lightweight conference navigator: it turns a busy schedule into a personal plan,
+            helps you start conversations that don’t feel awkward, and captures the tiny next actions that make conferences worth it.
+          </p>
+          <div class="ctaRow">
+            <button class="primary" id="demoPrompt">Generate a conversation opener</button>
+            <button class="ghost" id="shuffleAgenda">Shuffle a sample agenda</button>
+          </div>
+          <div class="spark"></div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="pill">Offline-friendly</span>
+            <span class="pill">Privacy-first notes</span>
+            <span class="pill">Fast “what next?”</span>
+            <span class="pill">Founder-to-founder tone</span>
           </div>
         </div>
-      `;
-      el.querySelector('.title').textContent = cardTitle();
-      cardsLayer.appendChild(el);
-      return { id:i, el, agent:a, status:'backlog', x:0, y:0 };
+      </div>
+
+      <div class="miniGrid">
+        <div class="tile">
+          <h3>1) Decide what matters</h3>
+          <p>Pick a focus (pricing, retention, AI, sales) and Compass keeps your day aligned — not just fully booked.</p>
+        </div>
+        <div class="tile">
+          <h3>2) Navigate without friction</h3>
+          <p>One screen answers: <em>Where am I going next?</em> <em>Why?</em> <em>What question will I ask?</em></p>
+        </div>
+        <div class="tile">
+          <h3>3) Meet people better</h3>
+          <p>Conversation prompts with a founder vibe — smart, warm, and non‑cringe. Plus follow‑up templates.</p>
+        </div>
+        <div class="tile">
+          <h3>4) Leave with actions</h3>
+          <p>Turn talk notes into next steps. Make it obvious who to message, when, and what you promised.</p>
+        </div>
+      </div>
+    </header>
+
+    <section id="features" class="grid3">
+      <div class="card">
+        <div class="t">Agenda that respects attention</div>
+        <ul>
+          <li>“Must-see / Nice-to-see / Skip” triage</li>
+          <li>Auto buffer times + sanity breaks</li>
+          <li>One-tap “next session” directions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="t">Networking that feels human</div>
+        <ul>
+          <li>Opener + follow‑up question pairs</li>
+          <li>“Exit gracefully” scripts</li>
+          <li>Micro‑goals: 3 great convos &gt; 30 shallow</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="t">Notes → next actions</div>
+        <ul>
+          <li>Talk notes with auto action extraction</li>
+          <li>Contact capture + “why I care”</li>
+          <li>Post‑conference follow‑up queue</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="prompts" class="row">
+      <div class="panel">
+        <div class="label">Conversation prompt generator</div>
+        <div class="output" id="promptOut"></div>
+        <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+          <button class="primary" id="newPrompt">New prompt</button>
+          <button class="ghost" id="newTopic">Switch topic</button>
+        </div>
+        <div style="margin-top:10px; color:rgba(241,239,255,.60); font-size:12.5px; line-height:1.45;">
+          Tone rule: smart, specific, and warm. No “networking bro” energy.
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="label">Sample agenda (concept)</div>
+        <div class="output" id="agendaOut"></div>
+        <div style="margin-top:10px; color:rgba(241,239,255,.60); font-size:12.5px; line-height:1.45;">
+          This is illustrative — in the real app it would sync from the conference schedule and your bookmarks.
+        </div>
+      </div>
+    </section>
+
+    <section id="followups" class="panel" style="margin-top:12px;">
+      <div class="label">Follow-up system (what the cards were really about)</div>
+      <div class="grid3" style="margin-top:10px;">
+        <div class="tile">
+          <h3>Promise tracker</h3>
+          <p>Capture “I’ll intro you”, “I’ll send that deck”, “Let’s chat next week” as commitments, not forgotten notes.</p>
+        </div>
+        <div class="tile">
+          <h3>Follow‑up templates</h3>
+          <p>Short, personal messages: context + specific next step. No spammy LinkedIn energy.</p>
+        </div>
+        <div class="tile">
+          <h3>Post‑conference review</h3>
+          <p>End‑of‑day recap: what you learned, who mattered, and your next 3 actions before the memory fades.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>Concept page for a BoS Cambridge 2026 companion app. Built fast for demo/theatre.</div>
+      <div style="opacity:.85">Made to look snazzy, not “AI template”.</div>
+    </footer>
+  </div>
+
+  <script>
+    const promptOut = document.getElementById('promptOut');
+    const agendaOut = document.getElementById('agendaOut');
+
+    let topic = 'pricing & packaging';
+    const topics = ['pricing & packaging','retention loops','PLG funnels','founder sales','positioning','AI in SaaS','customer research','team scaling'];
+
+    const openers = [
+      (t)=>`I’m here mainly for <b>${t}</b> — what’s the most counterintuitive thing you’ve learned about it this year?`,
+      (t)=>`Quick one: if you could redo one decision about <b>${t}</b>, what would you change and why?`,
+      (t)=>`I’m trying to get sharper on <b>${t}</b>. What’s one signal you trust more than dashboards?`,
+      (t)=>`I’m collecting good takes on <b>${t}</b>. What’s a belief you’ve stopped believing?`,
+      (t)=>`What’s the simplest experiment you’ve run recently around <b>${t}</b> that actually moved the needle?`
+    ];
+
+    const followups = [
+      `If you have 30 seconds, what’s the one question you wish people asked you more often at conferences?`,
+      `What’s the “boring” thing you do consistently that most teams ignore?`,
+      `Where do you think people oversimplify cause/effect in metrics?`,
+      `What’s a mistake you now spot instantly in other teams?`
+    ];
+
+    function newPrompt(){
+      const opener = openers[(Math.random()*openers.length)|0](topic);
+      const f = followups[(Math.random()*followups.length)|0];
+      promptOut.innerHTML = `${opener}<br><br><span style="color:rgba(241,239,255,.70)">Follow-up:</span> ${f}`;
     }
 
-    function setPos(card, x, y, durMs){
-      card.el.classList.add('moving');
-      card.el.style.setProperty('--x', `${x}px`);
-      card.el.style.setProperty('--y', `${y}px`);
-      card.el.style.setProperty('--t', `${durMs}ms`);
-      clearTimeout(card._tm);
-      card._tm = setTimeout(()=>card.el.classList.remove('moving'), Math.max(180, durMs-80));
+    const blocks = [
+      { t:'09:15', title:'Keynote', why:'Set the tone, collect 3 principles.' },
+      { t:'10:10', title:'Talk: Retention', why:'Find one actionable experiment.' },
+      { t:'11:00', title:'Coffee + Networking', why:'Two great conversations.' },
+      { t:'12:05', title:'Talk: Pricing', why:'Challenge one assumption.' },
+      { t:'14:20', title:'Workshop', why:'Hands-on: ship a tiny system.' },
+      { t:'16:10', title:'Wrap + Follow-ups', why:'Send 2 messages same day.' }
+    ];
+
+    function shuffleAgenda(){
+      const items = [...blocks].sort(()=>Math.random()-0.5);
+      agendaOut.innerHTML = items.map(b =>
+        `<div style="margin:0 0 10px; padding:10px; border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(255,255,255,.04)">
+          <div style="font-weight:900">${b.t} — ${b.title}</div>
+          <div style="color:rgba(241,239,255,.72); font-size:12.5px; line-height:1.45">Intent: ${b.why}</div>
+        </div>`
+      ).join('');
     }
 
-    function updateBadges(cards){
-      const counts = { backlog:0, ready:0, progress:0, review:0, done:0 };
-      for(const c of cards) counts[c.status]++;
-      for(const k of STATUS) badgeEls[k].textContent = counts[k];
-      statEl.textContent = cards.length;
-      speedEl.textContent = `${SPEED.toFixed(1)}×`;
-    }
+    document.getElementById('newPrompt').addEventListener('click', newPrompt);
+    document.getElementById('demoPrompt').addEventListener('click', newPrompt);
 
-    function distributeInitial(cards, m){
-      // Start with empty, then stream in from above-left into Backlog
-      const cBack = m.cols.backlog;
-      cards.forEach((c, idx)=>{
-        const x = cBack.x + rand(10, cBack.w-260);
-        const y = cBack.y + 44 + (idx%12)*26 + rand(-6,6);
-        c.status = 'backlog';
-        c.el.style.opacity = '0';
-        setPos(c, x - rand(180,340), y - rand(140,280), 0);
-      });
-    }
-
-    function streamIn(cards, m){
-      const cBack = m.cols.backlog;
-      const baseDelay = 14 / SPEED;
-      cards.forEach((c, i)=>{
-        setTimeout(()=>{
-          c.el.style.opacity = '1';
-          const x = cBack.x + rand(10, cBack.w-260);
-          const y = cBack.y + 46 + (i%14)*24 + rand(-6,6);
-          setPos(c, x, y, 620/SPEED);
-        }, i*baseDelay);
-      });
-    }
-
-    function moveBatch(cards, m, from, to, n, opts={}){
-      const src = m.cols[from];
-      const dst = m.cols[to];
-      const candidates = cards.filter(c=>c.status===from);
-      for(let i=0;i<n && candidates.length;i++){
-        const c = candidates.splice((Math.random()*candidates.length)|0,1)[0];
-        c.status = to;
-        if(to==='done') c.el.classList.add('done');
-        const x = dst.x + rand(10, dst.w-260);
-        const y = dst.y + 46 + rand(0, Math.max(40, dst.h-120));
-        const dur = (opts.dur ?? rand(380, 860)) / SPEED;
-        setPos(c, x, y, dur);
-      }
-    }
-
-    function flipAgents(cards, howMany){
-      for(let i=0;i<howMany;i++){
-        const c = cards[(Math.random()*cards.length)|0];
-        const a = pick(agents);
-        c.agent = a;
-        const chip = c.el.querySelector('.meta .chip');
-        chip.className = `chip ${a.cls}`;
-        chip.textContent = a.label;
-      }
-    }
-
-    let RUN = 0;
-    function startShow(){
-      RUN++;
-      const run = RUN;
-      cardsLayer.innerHTML = '';
-
-      const m = measureColumns();
-      const TOTAL = 240;
-      const cards = Array.from({length: TOTAL}, (_,i)=>makeCard(i));
-
-      // Reset
-      cards.forEach(c=>c.el.classList.remove('done'));
-      distributeInitial(cards, m);
-      updateBadges(cards);
-
-      // Stream in
-      streamIn(cards, m);
-
-      // Theatre loop
-      const tick = () => {
-        if(run!==RUN) return;
-        const m2 = measureColumns();
-
-        // forward waves
-        moveBatch(cards, m2, 'backlog', 'ready',   26, {dur: rand(520, 980)});
-        moveBatch(cards, m2, 'ready',   'progress',18, {dur: rand(420, 900)});
-        moveBatch(cards, m2, 'progress','review',  14, {dur: rand(420, 900)});
-        moveBatch(cards, m2, 'review',  'done',    16, {dur: rand(420, 920)});
-
-        // bounce back / non-linear chaos
-        moveBatch(cards, m2, 'review',  'progress', 7, {dur: rand(360, 780)});
-        moveBatch(cards, m2, 'progress','ready',    6, {dur: rand(360, 780)});
-        moveBatch(cards, m2, 'ready',   'backlog',  4, {dur: rand(360, 760)});
-
-        // occasional shove to done
-        if(Math.random() < .55) moveBatch(cards, m2, 'backlog','done', 6, {dur: rand(520, 980)});
-
-        // agent flips for sparkle
-        flipAgents(cards, 12);
-
-        updateBadges(cards);
-
-        // End condition: when most are Done, do a final slam
-        const done = cards.filter(c=>c.status==='done').length;
-        if(done > TOTAL * 0.84){
-          // final slam to Done
-          for(const k of ['backlog','ready','progress','review']){
-            moveBatch(cards, m2, k, 'done', 60, {dur: rand(360, 820)});
-          }
-          updateBadges(cards);
-          return;
-        }
-
-        setTimeout(tick, 260 / SPEED);
-      };
-
-      // slight lead-in, then theatre
-      setTimeout(tick, 900 / SPEED);
-
-      // On resize, keep animation coherent
-      const onResize = () => {
-        if(run!==RUN) return;
-        const m3 = measureColumns();
-        // softly re-place cards within their current columns
-        for(const c of cards){
-          const col = m3.cols[c.status];
-          const x = col.x + rand(10, col.w-260);
-          const y = col.y + 46 + rand(0, Math.max(50, col.h-130));
-          setPos(c, x, y, 520 / SPEED);
-        }
-      };
-      window.addEventListener('resize', onResize, {passive:true});
-      setTimeout(()=>window.removeEventListener('resize', onResize), 30_000);
-    }
-
-    // Controls
-    document.getElementById('restart').addEventListener('click', startShow);
-    document.getElementById('faster').addEventListener('click', ()=>{SPEED=clamp(SPEED+0.2,0.6,2.4); speedEl.textContent=`${SPEED.toFixed(1)}×`;});
-    document.getElementById('slower').addEventListener('click', ()=>{SPEED=clamp(SPEED-0.2,0.6,2.4); speedEl.textContent=`${SPEED.toFixed(1)}×`;});
-
-    window.addEventListener('keydown', (e)=>{
-      if(e.code==='Space'){ e.preventDefault(); startShow(); }
-      if(e.key==='ArrowUp'){ SPEED=clamp(SPEED+0.2,0.6,2.4); speedEl.textContent=`${SPEED.toFixed(1)}×`; }
-      if(e.key==='ArrowDown'){ SPEED=clamp(SPEED-0.2,0.6,2.4); speedEl.textContent=`${SPEED.toFixed(1)}×`; }
+    document.getElementById('newTopic').addEventListener('click', ()=>{
+      topic = topics[(Math.random()*topics.length)|0];
+      newPrompt();
     });
 
-    // Start
-    startShow();
+    document.getElementById('shuffleAgenda').addEventListener('click', shuffleAgenda);
+
+    // initial
+    newPrompt();
+    shuffleAgenda();
   </script>
 </body>
 </html>
