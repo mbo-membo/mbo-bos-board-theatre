@@ -3,23 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BoS Cambridge 2026 — Compass</title>
-  <meta name="description" content="BoS Compass: a realistic, clean concept for a Business of Software Cambridge 2026 companion app." />
+  <title>BoS Compass — Cambridge 2026</title>
+  <meta name="description" content="BoS Compass: a clean, realistic concept page for a Business of Software Cambridge 2026 companion app." />
   <style>
     :root{
-      /* BoS-ish: deep navy + warm orange + teal */
-      --navy:#0b1020;
-      --navy2:#0f1730;
-      --ink:#f7f7ff;
-      --muted:rgba(247,247,255,.74);
-      --stroke:rgba(255,255,255,.10);
-      --card:rgba(255,255,255,.06);
-      --shadow:0 18px 55px rgba(0,0,0,.45);
-      --radius:18px;
-
-      --orange:#ff6a2a;
-      --teal:#19c6b6;
-      --blue:#5aa7ff;
+      --orange:#f05a28;   /* BoS-style orange */
+      --orange2:#ff7a4d;
+      --ink:#111318;
+      --muted:#5b6373;
+      --bg:#ffffff;
+      --bg2:#f6f7fb;
+      --stroke:#e7e9f1;
+      --shadow: 0 10px 28px rgba(16,24,40,.10);
+      --shadow2: 0 18px 50px rgba(16,24,40,.12);
+      --radius:16px;
     }
 
     *{box-sizing:border-box}
@@ -29,196 +26,204 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--ink);
       background:
-        radial-gradient(900px 700px at 15% 0%, rgba(25,198,182,.16), transparent 60%),
-        radial-gradient(900px 700px at 85% 10%, rgba(255,106,42,.16), transparent 55%),
-        linear-gradient(180deg, var(--navy), var(--navy2));
-      overflow-x:hidden;
+        radial-gradient(1200px 800px at 15% 0%, rgba(240,90,40,.10), transparent 55%),
+        radial-gradient(900px 650px at 85% 10%, rgba(240,90,40,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
     }
 
-    .wrap{max-width:1080px; margin:0 auto; padding:18px 18px 72px;}
+    a{color:inherit}
+    .wrap{max-width:1100px; margin:0 auto; padding:14px 18px 72px;}
 
-    /* Top bar */
-    .top{
-      position:sticky; top:0; z-index:20;
-      margin:12px 0 18px;
+    /* Top banner (like BoS site) */
+    .banner{
+      background: var(--orange);
+      color: #fff;
+      font-weight:800;
+      letter-spacing:.02em;
+      font-size:13px;
+      padding:10px 12px;
+      border-radius: 12px;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      box-shadow: var(--shadow);
+    }
+    .banner small{opacity:.92; font-weight:750}
+
+    /* Nav */
+    nav{
+      margin-top:12px;
       border:1px solid var(--stroke);
-      background:rgba(9,12,24,.70);
-      border-radius:999px;
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.86);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      position: sticky; top: 10px; z-index: 20;
+      backdrop-filter: blur(8px);
     }
-    .topInner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px;}
-    .brand{display:flex; align-items:center; gap:10px; padding:2px 8px; min-width:240px}
-    .mark{width:10px;height:10px;border-radius:99px;background:linear-gradient(120deg,var(--orange),var(--teal)); box-shadow:0 0 18px rgba(255,106,42,.22)}
+    .navInner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px;}
+    .brand{display:flex; align-items:center; gap:10px; padding:2px 8px;}
+    .mark{width:10px;height:10px;border-radius:99px;background: var(--orange); box-shadow:0 0 0 6px rgba(240,90,40,.12)}
     .brand b{letter-spacing:-.02em}
-    .brand span{color:rgba(247,247,255,.72); font-weight:700}
+    .brand span{color:var(--muted); font-weight:750}
 
     .links{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
     .links a{
       text-decoration:none;
-      color:rgba(247,247,255,.86);
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
+      color:#1a1d23;
+      border:1px solid transparent;
       padding:8px 10px;
       border-radius:999px;
       font-size:13px;
-      transition:transform .12s ease, background .2s ease, border-color .2s ease;
+      font-weight:750;
     }
-    .links a:hover{transform:translateY(-1px); background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.18)}
+    .links a:hover{border-color:var(--stroke); background: rgba(240,90,40,.06)}
 
     /* Hero */
-    .hero{
+    header.hero{
+      margin-top:16px;
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap:16px;
-      align-items:stretch;
+      align-items:start;
     }
-    @media (max-width: 980px){.hero{grid-template-columns:1fr;}}
+    @media (max-width: 980px){header.hero{grid-template-columns:1fr;}}
 
     .card{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.05);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
     }
 
     .pad{padding:22px;}
 
     .kicker{
       display:flex; align-items:center; gap:10px;
+      color:var(--muted);
       font-size:12.5px;
-      letter-spacing:.16em;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      color:rgba(247,247,255,.68);
+      font-weight:800;
     }
 
-    h1{margin:10px 0 10px; font-size: clamp(28px, 3.4vw, 44px); line-height:1.05; letter-spacing:-.03em}
-    .lead{margin:0; color:rgba(247,247,255,.76); line-height:1.55; font-size:15px; max-width:70ch}
+    h1{margin:12px 0 10px; font-size: clamp(30px, 3.2vw, 46px); line-height:1.06; letter-spacing:-.03em}
+    .lead{margin:0; color:#2c3240; line-height:1.6; font-size:15px; max-width:70ch}
 
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
     button{
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid var(--stroke);
       padding:10px 12px;
-      font-weight:800;
+      font-weight:850;
       cursor:pointer;
-      color:var(--ink);
-      background:rgba(255,255,255,.05);
-      transition:transform .12s ease, background .2s ease, border-color .2s ease;
+      color:#1a1d23;
+      background:#fff;
+      transition:transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 0 8px 18px rgba(16,24,40,.08);
     }
+    button:hover{transform:translateY(-1px); border-color:#d9ddeb}
     button.primary{
-      background: linear-gradient(120deg, rgba(255,106,42,.35), rgba(25,198,182,.22));
-      border-color: rgba(255,106,42,.30);
+      color:#fff;
+      border-color: rgba(240,90,40,.35);
+      background: linear-gradient(180deg, var(--orange2), var(--orange));
+      box-shadow: 0 14px 30px rgba(240,90,40,.22);
     }
-    button:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18)}
 
-    /* Feature list (clean, not boxy) */
-    .features{margin-top:14px; display:grid; grid-template-columns:1fr; gap:10px;}
-    .feat{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.035);
-      border-radius:14px;
-      padding:14px 14px;
-    }
-    .feat b{display:block; margin-bottom:6px; letter-spacing:-.01em}
-    .feat p{margin:0; color:rgba(247,247,255,.72); line-height:1.5; font-size:13.5px}
+    .features{margin-top:18px; display:grid; gap:10px;}
+    .feat{border:1px solid var(--stroke); border-radius:14px; padding:14px; background: #fff;}
+    .feat b{display:block; margin-bottom:6px;}
+    .feat p{margin:0; color:#3b4354; line-height:1.55; font-size:13.5px}
 
-    /* Interactive modules */
     section{margin-top:16px;}
-    .row{display:grid; grid-template-columns: 1fr 1fr; gap:14px;}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:16px; align-items:start;}
     @media (max-width: 980px){.row{grid-template-columns:1fr;}}
 
-    .label{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:rgba(247,247,255,.62); margin-bottom:10px}
+    .label{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:850; margin-bottom:10px}
 
     .fieldRow{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
     select{
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-      color:var(--ink);
+      border:1px solid var(--stroke);
+      background:#fff;
+      color:#1a1d23;
       border-radius:12px;
       padding:10px 10px;
-      font-weight:750;
+      font-weight:800;
       outline:none;
     }
 
     .bubble{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.05);
-      border-radius:16px;
+      border:1px solid var(--stroke);
+      background: #fff;
+      border-radius: 16px;
       padding:14px;
-      line-height:1.55;
-      color:rgba(247,247,255,.84);
-      min-height:108px;
+      line-height:1.65;
+      color:#222735;
+      min-height:110px;
       position:relative;
+      box-shadow: 0 10px 24px rgba(16,24,40,.08);
     }
     .bubble:before{
       content:"";
       position:absolute;
-      left:16px; top:-7px;
+      left:18px; top:-7px;
       width:14px; height:14px;
-      background:rgba(255,255,255,.05);
-      border-left:1px solid rgba(255,255,255,.10);
-      border-top:1px solid rgba(255,255,255,.10);
+      background:#fff;
+      border-left:1px solid var(--stroke);
+      border-top:1px solid var(--stroke);
       transform:rotate(45deg);
     }
 
-    .tiny{margin-top:10px; color:rgba(247,247,255,.62); font-size:12.5px; line-height:1.45}
+    .tiny{margin-top:10px; color:var(--muted); font-size:12.5px; line-height:1.5}
 
-    .scheduleItem{
-      padding:12px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      border-radius:14px;
-      margin-bottom:10px;
-    }
-    .scheduleItem .time{color:rgba(247,247,255,.72); font-weight:850; letter-spacing:.02em}
-    .scheduleItem .title{font-weight:900; margin-top:3px}
-    .scheduleItem .desc{color:rgba(247,247,255,.72); font-size:13px; line-height:1.45; margin-top:6px}
+    .scheduleItem{padding:12px; border:1px solid var(--stroke); background:#fff; border-radius:14px; margin-bottom:10px;}
+    .scheduleItem .time{color:#2a3142; font-weight:900; letter-spacing:.02em}
+    .scheduleItem .title{font-weight:950; margin-top:3px}
+    .scheduleItem .desc{color:#3b4354; font-size:13px; line-height:1.55; margin-top:6px}
 
-    footer{margin-top:18px; color:rgba(247,247,255,.60); font-size:12.5px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px}
-
-    .accentLine{height:1px; background:linear-gradient(90deg, transparent, rgba(255,106,42,.7), rgba(25,198,182,.6), transparent); opacity:.8; margin:14px 0;}
+    footer{margin-top:18px; color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="top">
-      <div class="topInner">
+    <div class="banner">
+      <div><small>BoS Europe 2026</small> · Cambridge, UK · 13–14 April 2026</div>
+      <div>Conference companion concept</div>
+    </div>
+
+    <nav>
+      <div class="navInner">
         <div class="brand"><span class="mark"></span> <div><b>BoS</b> <span>Compass</span></div></div>
         <div class="links">
           <a href="#concept">Concept</a>
-          <a href="#prompts">Conversation</a>
+          <a href="#conversation">Conversation</a>
           <a href="#schedule">Schedule</a>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <div class="hero" id="concept">
+    <header class="hero" id="concept">
       <div class="card">
         <div class="pad">
-          <div class="kicker"><span class="mark"></span> Business of Software • Cambridge 2026</div>
-          <h1>A realistic conference companion.
-            <span style="color:rgba(247,247,255,.72)">Plan, meet, and follow up — cleanly.</span>
+          <div class="kicker"><span class="mark"></span> A realistic app page those cards could have shipped</div>
+          <h1>Navigate BoS Cambridge like a local.
+            <span style="color:#2c3240; font-weight:900">Meet better people. Leave with actions.</span>
           </h1>
           <p class="lead">
-            <b>BoS Compass</b> is a lightweight app concept designed for founders: it helps you pick the right sessions,
-            start better conversations, and leave with real next actions.
+            <b>BoS Compass</b> is a simple conference companion: it turns the schedule into a personal plan,
+            gives you conversation openers that don’t feel awkward, and captures next steps so the value survives the flight home.
           </p>
           <div class="cta">
             <button class="primary" id="gen">Generate opener</button>
             <button id="copy">Copy</button>
           </div>
 
-          <div class="accentLine"></div>
-
           <div class="features">
-            <div class="feat"><b>Agenda that respects attention</b><p>Turn a busy schedule into a personal plan with intent, buffers, and “what next?” directions.</p></div>
-            <div class="feat"><b>Networking that feels human</b><p>Smart openers + follow-up questions + graceful exits. No cringe. Just useful.</p></div>
-            <div class="feat"><b>Notes → next actions</b><p>Capture what matters and queue same-day follow-ups before the conference glow fades.</p></div>
+            <div class="feat"><b>Agenda that respects attention</b><p>“Must-see / nice-to-see / skip”, buffer time, and one-tap “what’s next?” directions.</p></div>
+            <div class="feat"><b>Networking that feels human</b><p>Opener + follow-up pairs, graceful exits, and reminders of what you actually care about.</p></div>
+            <div class="feat"><b>Notes → next actions</b><p>Talk notes that become follow-ups: who, what you promised, and when to message.</p></div>
           </div>
         </div>
       </div>
 
-      <div class="card" id="prompts">
+      <div class="card" id="conversation">
         <div class="pad">
           <div class="label">Conversation opener</div>
           <div class="fieldRow" style="margin-bottom:10px;">
@@ -226,15 +231,15 @@
             <button id="switch">Surprise me</button>
           </div>
           <div class="bubble" id="out"></div>
-          <div class="tiny">Tip: use the opener, then ask one specific follow-up. Your goal is one great conversation, not “networking”.</div>
+          <div class="tiny">Rule of thumb: opener → one specific follow-up → swap one real example.</div>
         </div>
       </div>
-    </div>
+    </header>
 
     <section class="row" id="schedule">
       <div class="card">
         <div class="pad">
-          <div class="label">Schedule (from BoS Europe 2026 page)</div>
+          <div class="label">Schedule (publicly readable now)</div>
           <div class="scheduleItem">
             <div class="time">3:30–6:00 pm</div>
             <div class="title">Photo Walk (meet at Porters’ Lodge, Churchill College)</div>
@@ -246,27 +251,26 @@
             <div class="desc">Check in, grab a drink, and start connecting with founders/CEOs/operators.</div>
           </div>
           <div class="tiny">
-            I can’t currently see the full day-by-day agenda on the site (it may be loaded dynamically), so this section includes the items that are publicly readable right now.
-            If you paste the official agenda link/PDF, I’ll drop the complete schedule in.
+            If you send me the official full agenda link/PDF, I’ll replace this with the complete schedule (Day 1 / Day 2) in the same clean style.
           </div>
         </div>
       </div>
 
       <div class="card">
         <div class="pad">
-          <div class="label">Follow‑up templates (practical)</div>
+          <div class="label">Follow‑up templates</div>
           <div class="bubble" id="follow"></div>
           <div class="cta" style="margin-top:10px;">
             <button class="primary" id="newFollow">New follow‑up</button>
           </div>
-          <div class="tiny">Short, contextual, and specific beats “great to connect!” every time.</div>
+          <div class="tiny">Short + contextual + specific beats generic “great to connect!” every time.</div>
         </div>
       </div>
     </section>
 
     <footer>
-      <div>BoS Compass is a concept page: realistic, clean, and demo-friendly.</div>
-      <div style="opacity:.85">Colours tuned to a calmer BoS vibe (navy + orange + teal).</div>
+      <div>Concept page (clean, orange/white BoS vibe). Built fast for demo.</div>
+      <div>URL: <span style="font-weight:850">mbo-membo.github.io/mbo-bos-board-theatre</span></div>
     </footer>
   </div>
 
@@ -286,11 +290,11 @@
     }
 
     const openers = [
-      (t)=>`I’m here to get sharper on <b>${t}</b> — what’s the most counterintuitive thing you’ve learned about it recently?`,
-      (t)=>`If you could redo one decision about <b>${t}</b>, what would you change (and what did it teach you)?`,
-      (t)=>`What’s a “boring” habit around <b>${t}</b> that consistently outperforms big initiatives?`,
-      (t)=>`What’s one experiment you’ve run around <b>${t}</b> that actually moved a real metric — not just activity?`,
-      (t)=>`Where do you see people oversimplify cause/effect when they talk about <b>${t}</b>?`
+      (t)=>`I’m here mainly for <b>${t}</b> — what’s the most counterintuitive thing you’ve learned about it this year?`,
+      (t)=>`If you could redo one decision about <b>${t}</b>, what would you change (and why)?`,
+      (t)=>`What’s the smallest experiment you’ve run around <b>${t}</b> that genuinely moved a real metric?`,
+      (t)=>`Where do you see smart teams oversimplify cause/effect when they talk about <b>${t}</b>?`,
+      (t)=>`What’s a “boring” habit around <b>${t}</b> that consistently beats big initiatives?`
     ];
 
     const followups = [
@@ -304,7 +308,7 @@
       const t = topicSel.value;
       const opener = openers[(Math.random()*openers.length)|0](t);
       const f = followups[(Math.random()*followups.length)|0];
-      out.innerHTML = `${opener}<div style="margin-top:10px; color:rgba(247,247,255,.70)">${f}</div>`;
+      out.innerHTML = `${opener}<div style="margin-top:10px; color:#5b6373">${f}</div>`;
     }
 
     function copyText(){
@@ -315,14 +319,13 @@
         $('#copy').textContent='Copied';
         setTimeout(()=>$('#copy').textContent='Copy', 900);
       }).catch(()=>{
-        // fallback
         prompt('Copy this:', text);
       });
     }
 
     const followOut = $('#follow');
     const templates = [
-      (name)=>`Hi ${name} — great talking at BoS. The bit you said about <b>keeping experiments tiny</b> stuck with me. Would you be up for a 15‑min chat next week? I’d love to ask one follow-up about how you choose what to cut.`,
+      (name)=>`Hi ${name} — great talking at BoS. The bit you said about <b>keeping experiments tiny</b> stuck with me. Would you be up for a 15‑min chat next week? I’d love one follow-up on how you choose what to cut.`,
       (name)=>`Hey ${name} — enjoyed our chat at BoS. You mentioned <b>one metric you stopped trusting</b> and I’ve been thinking about it. If you can share a quick example, I’ll swap you mine too.`,
       (name)=>`Hi ${name} — thanks again for the BoS conversation. I wrote down your suggestion about <b>buffering attention</b> between sessions. If you’re open, I’ll send you a 3‑bullet summary of what I’m trying — would love your critique.`
     ];
